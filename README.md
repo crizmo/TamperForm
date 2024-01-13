@@ -2,7 +2,8 @@
 
 ## Description
 
-This project is a userscript designed to automate the process of filling out a Google Form. It randomly selects an Indian name from a predefined list and fills out the form accordingly. It supports text inputs, radio buttons, checkboxes, and select dropdowns.
+This project is a userscript designed to automate the process of filling out a Google Form. <br />
+As of today it supports radio buttons only.
 
 ## Installation
 

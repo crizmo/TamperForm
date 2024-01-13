@@ -16,7 +16,7 @@
 
     function submitRandomForm() {
         // Select a random Indian name
-        const randomName = names[Math.floor(Math.random() * indianNames.length)];
+        const randomName = names[Math.floor(Math.random() * names.length)];
 
         // Fill out the name field
         const nameField = document.querySelector('input[type="text"]');

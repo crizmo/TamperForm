@@ -12,60 +12,43 @@
 (function () {
     'use strict';
 
-    const names = [/* Fill with names */];
+    const names = [ /* Your names */];
 
-    function submitRandomForm() {
-        // Select a random name
-        const randomName = names[Math.floor(Math.random() * names.length)];
+    // Select a random name
+    const randomName = names[Math.floor(Math.random() * names.length)];
 
-        // Fill out the name field
-        const nameField = document.querySelector('input[type="text"]');
-        nameField.value = randomName;
+    // Fill out the name field
+    const nameField = document.querySelector('input[type="text"]');
+    nameField.value = randomName;
 
-        // Dispatch an input event
-        let event = new Event('input', {
-            bubbles: true,
-            cancelable: true,
-        });
-        nameField.dispatchEvent(event);
+    // Dispatch an input event
+    let event = new Event('input', {
+        bubbles: true,
+        cancelable: true,
+    });
+    nameField.dispatchEvent(event);
 
-        // Get all multiple choice questions
-        const multipleChoiceQuestions = document.querySelectorAll('div[data-params]');
+    // Get all multiple choice questions
+    const multipleChoiceQuestions = document.querySelectorAll('div[data-params]');
 
-        multipleChoiceQuestions.forEach((question, index) => {
-            // Delay the execution of this code
-            setTimeout(() => {
-                // Get all options for this question
-                const options = question.querySelectorAll('div[role="radio"]');
-
-                // Select a random option
-                if (options.length > 0) {
-                    const randomOptionIndex = Math.floor(Math.random() * options.length);
-                    options[randomOptionIndex].click();
-                }
-            }, index * 1000); // Delay of 1 second
-        });
-
-        // Delay the submission of the form
+    multipleChoiceQuestions.forEach((question, index) => {
+        // Delay the execution of this code
         setTimeout(() => {
-            // Submit the form
-            document.querySelector('div[role="button"][jsname="M2UYVd"]').click();
-        }, multipleChoiceQuestions.length * 1000); // Delay of 1 second per question
+            // Get all options for this question
+            const options = question.querySelectorAll('div[role="radio"]');
 
-    }
+            // Select a random option
+            if (options.length > 0) {
+                const randomOptionIndex = Math.floor(Math.random() * options.length);
+                options[randomOptionIndex].click();
+            }
+        }, index * 1000); // Delay of 1 second
+    });
 
-    // This don't work ig lol
-    function goBackToForm() {
-        // Delay the navigation back to the form page
-        setTimeout(() => {
-            // Replace with your form URL
-            window.location.href = 'https://docs.google.com/forms/d/e/your_form_id/viewform';
-        }, 5000); // Delay of 2 seconds
-    }
+    // Delay the submission of the form
+    setTimeout(() => {
+        // Submit the form
+        document.querySelector('div[role="button"][jsname="YOUR_BUTTON_JSNAME_HERE"]').click();
+    }, multipleChoiceQuestions.length * 1000); // Delay of 1 second per question
 
-    if (window.location.pathname.endsWith('/formResponse')) { // If we're on the "submitted" page
-        goBackToForm();
-    } else if (window.location.pathname.indexOf('/forms/d') === 0) { // If we're on the form page
-        submitRandomForm();
-    }
 })();
